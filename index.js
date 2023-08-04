@@ -13,7 +13,7 @@ const {
 // middleware para parseo de json--------------------
 app.use(express.json());
 // uso de cors para acceso de otros dominios--------------------
-const whitelist = ['http://localhost:8080', 'https://dominioDePrueba.com'];
+const whitelist = ['http://localhost:8080', 'https://dominioDePrueba.com', 'http://localhost:3000', 'http://localhost:5173'];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
