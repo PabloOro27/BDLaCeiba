@@ -46,6 +46,28 @@ class productoService {
     await producto.destroy();
     return { message: 'producto deleted' };
   }
+  // eliminar un producto de la tabla productos_categorias----------------------------------------------
+  // deleteWithCategories - eliminamos un producto y sus filas relacionadas en productos_categorias
+  async deleteWithCategories(id) {
+    // Buscar el producto por su id
+    const producto = await models.Producto.findByPk(id);
+    if (!producto) {
+      throw boom.notFound('producto not found');
+    } else {
+      // Eliminar las filas relacionadas en productos_categorias
+      await models.ProductosCategorias.destroy({
+        where: {
+          productos_id: id,
+        },
+      });
+
+      // Eliminar el producto
+      await producto.destroy();
+
+      return { message: 'producto and its related categories deleted' };
+    }
+
+  }
   // ------------------------------------------------------------------------------
   async findCategory() {
     const query = `

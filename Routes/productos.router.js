@@ -74,7 +74,7 @@ router.delete('/:id',
   try {
     const { id } = req.params;
     const idIntenger = parseInt(id);
-    const producto = await service.delete(idIntenger); // eliminamos el producto en el servicio
+    const producto = await service.deleteWithCategories(idIntenger); // eliminamos el producto en el servicio
     // respondemos con un json con los productos de la base de datos
     res.status(200).json(producto);
   } catch (error) {

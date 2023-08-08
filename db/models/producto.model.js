@@ -49,7 +49,7 @@ const ProductoSchema = {
     type: DataTypes.INTEGER,
   },
   existencia: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.INTEGER,
   },
 };
